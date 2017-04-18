@@ -35,3 +35,18 @@ function nutrifox_shortcode( $attr ) {
 	<?php
 	return ob_get_clean();
 }
+
+/**
+ * If Nutrifox is in the body content, load JS as early as possible
+ */
+function nutrifox_action_wp_head_early() {
+	if ( ! is_singular()
+		|| empty( get_queried_object()->post_content )
+		|| false === strpos( get_queried_object()->post_content, 'nutrifox' ) ) {
+		return;
+	}
+	?>
+	<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+	<?php
+}
+add_action( 'wp_head', 'nutrifox_action_wp_head_early', 1 );
