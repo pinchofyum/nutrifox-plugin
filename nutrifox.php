@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Nutrifox
  * Plugin URI:      https://nutrifox.com/
- * Description:     Embed Nutrifox recipes in WordPress.
+ * Description:     Embed Nutrifox recipes in WordPress in one moment or less.
  * Author:          Pinch of Yum
  * Author URI:      http://pinchofyum.com/
  * Text Domain:     nutrifox
