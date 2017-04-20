@@ -31,10 +31,10 @@ function nutrifox_shortcode( $attr ) {
 		return '';
 	}
 	ob_start(); ?>
-	<div class="nutrifox-label" data-recipe-id="<?php echo (int) $attr['id']; ?>"></div>
-	<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+<div class="nutrifox-label" data-recipe-id="<?php echo (int) $attr['id']; ?>"></div>
+<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
 	<?php
-	return ob_get_clean();
+	return trim( ob_get_clean() );
 }
 
 /**
