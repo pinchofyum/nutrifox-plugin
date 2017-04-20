@@ -87,4 +87,26 @@ EOT;
 EOT;
 		$this->assertEquals( $output, trim( apply_filters( 'the_content', $input ) ) );
 	}
+
+	/**
+	 * Ensure sortcode reversal works as expected
+	 */
+	public function test_shortcode_reversal() {
+		$input = <<<EOT
+My favorite WordPress feature
+
+<div class="nutrifox-label" data-recipe-id="7500"></div>
+<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+
+Don't you live it too?
+EOT;
+		$output = <<<EOT
+My favorite WordPress feature
+
+[nutrifox id=\"7500\"]
+
+Don\'t you live it too?
+EOT;
+		$this->assertEquals( $output, wp_filter_post_kses( $input ) );
+	}
 }
