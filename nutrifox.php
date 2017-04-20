@@ -17,7 +17,7 @@
  */
 function nutrifox_action_init() {
 	add_shortcode( 'nutrifox', 'nutrifox_shortcode' );
-	wp_embed_register_handler( 'nutrifox', '#^https?://nutrifox\.com/embed/label/(?P<id>\d+)#', 'nutrifox_shortcode' );
+	wp_embed_register_handler( 'nutrifox', '#^https?://nutrifox\.com/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', 'nutrifox_shortcode' );
 }
 add_action( 'init', 'nutrifox_action_init' );
 
