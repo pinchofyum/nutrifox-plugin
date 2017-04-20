@@ -51,3 +51,23 @@ function nutrifox_action_wp_head_early() {
 	<?php
 }
 add_action( 'wp_head', 'nutrifox_action_wp_head_early', 1 );
+
+/**
+ * Transform Nutrifox embed codes into their shortcode
+ *
+ * @param string $content Content to search through.
+ * @return string
+ */
+function nutrifox_filter_pre_kses( $content ) {
+
+	$needle = '#<div class="nutrifox-label.+data-recipe-id="([^"]+)".+\n?<script[^>]+src="https://nutrifox\.com/embed\.js[^>]+></script>?#';
+	if ( preg_match_all( $needle, $content, $matches ) ) {
+		$replacements = array();
+		foreach ( $matches[0] as $key => $value ) {
+			$content = str_replace( $value, '[nutrifox id="' . (int) $matches[1][ $key ] . '"]', $content );
+		}
+	}
+
+	return $content;
+}
+add_action( 'pre_kses', 'nutrifox_filter_pre_kses' );
