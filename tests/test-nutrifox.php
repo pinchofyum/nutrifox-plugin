@@ -92,6 +92,7 @@ EOT;
 	 * Ensure sortcode reversal works as expected
 	 */
 	public function test_shortcode_reversal() {
+		$post_id = $this->factory->post->create();
 		$input = <<<EOT
 My favorite WordPress feature
 
@@ -103,17 +104,22 @@ EOT;
 		$output = <<<EOT
 My favorite WordPress feature
 
-[nutrifox id=\"7500\"]
+[nutrifox id="7500"]
 
-Don\'t you live it too?
+Don't you live it too?
 EOT;
-		$this->assertEquals( $output, wp_filter_post_kses( $input ) );
+		wp_update_post( array(
+			'ID' => $post_id,
+			'post_content' => $input,
+		) );
+		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
 
 	/**
 	 * Ensure sortcode reversal works as expected
 	 */
 	public function test_shortcode_reversal_format_two() {
+		$post_id = $this->factory->post->create();
 		$input = <<<EOT
 Test test
 <div class="nutrifox-label" data-recipe-id="8480">&nbsp;</div>
@@ -123,11 +129,15 @@ Don't you live it too?
 EOT;
 		$output = <<<EOT
 Test test
-[nutrifox id=\"8480\"]
+[nutrifox id="8480"]
 
-Don\'t you live it too?
+Don't you live it too?
 EOT;
-		$this->assertEquals( $output, wp_filter_post_kses( $input ) );
+		wp_update_post( array(
+			'ID' => $post_id,
+			'post_content' => $input,
+		) );
+		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
 
 }
