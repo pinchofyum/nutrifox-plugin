@@ -109,4 +109,25 @@ Don\'t you live it too?
 EOT;
 		$this->assertEquals( $output, wp_filter_post_kses( $input ) );
 	}
+
+	/**
+	 * Ensure sortcode reversal works as expected
+	 */
+	public function test_shortcode_reversal_format_two() {
+		$input = <<<EOT
+Test test
+<div class="nutrifox-label" data-recipe-id="8480">&nbsp;</div>
+<script async="" src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+
+Don't you live it too?
+EOT;
+		$output = <<<EOT
+Test test
+[nutrifox id=\"8480\"]
+
+Don\'t you live it too?
+EOT;
+		$this->assertEquals( $output, wp_filter_post_kses( $input ) );
+	}
+
 }
