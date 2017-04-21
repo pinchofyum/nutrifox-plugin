@@ -58,16 +58,21 @@ add_action( 'wp_head', 'nutrifox_action_wp_head_early', 1 );
  * @param string $content Content to search through.
  * @return string
  */
-function nutrifox_filter_pre_kses( $content ) {
+function nutrifox_filter_content_save_pre( $content ) {
 
-	$needle = '#<div class="nutrifox-label.+data-recipe-id="([^"]+)".+\n?<script[^>]+src="https://nutrifox\.com/embed\.js[^>]+></script>?#';
+	if ( false === stripos( $content, 'nutrifox-label' ) ) {
+		return $content;
+	}
+
+	// $content comes through slashed
+	$needle = '#<div class=\"nutrifox-label.+data-recipe-id=\"([^"]+)\".+\n?<script[^>]+src=\"https://nutrifox\.com/embed\.js[^>]+></script>?#';
 	if ( preg_match_all( $needle, $content, $matches ) ) {
 		$replacements = array();
 		foreach ( $matches[0] as $key => $value ) {
-			$content = str_replace( $value, '[nutrifox id="' . (int) $matches[1][ $key ] . '"]', $content );
+			$content = str_replace( $value, '[nutrifox id=\"' . (int) $matches[1][ $key ] . '\"]', $content );
 		}
 	}
 
 	return $content;
 }
-add_action( 'pre_kses', 'nutrifox_filter_pre_kses' );
+add_action( 'content_save_pre', 'nutrifox_filter_content_save_pre' );
