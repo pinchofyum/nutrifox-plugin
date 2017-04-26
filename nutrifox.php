@@ -65,7 +65,7 @@ function nutrifox_filter_content_save_pre( $content ) {
 	}
 
 	// $content comes through slashed
-	$needle = '#<div class=\"nutrifox-label.+data-recipe-id=\"([^"]+)\".+\n?<script[^>]+src=\"https://nutrifox\.com/embed\.js[^>]+></script>?#';
+	$needle = '#<div class=\\\"nutrifox-label.+data-recipe-id=\\\"([^"]+)\\\".+\n*<script[^>]+src=\\\"https://nutrifox\.com/embed\.js[^>]+></script>#';
 	if ( preg_match_all( $needle, $content, $matches ) ) {
 		$replacements = array();
 		foreach ( $matches[0] as $key => $value ) {
