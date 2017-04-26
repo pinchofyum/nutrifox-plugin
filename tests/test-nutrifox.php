@@ -110,7 +110,7 @@ Don't you live it too?
 EOT;
 		wp_update_post( array(
 			'ID' => $post_id,
-			'post_content' => $input,
+			'post_content' => wp_slash( $input ),
 		) );
 		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
@@ -135,7 +135,32 @@ Don't you live it too?
 EOT;
 		wp_update_post( array(
 			'ID' => $post_id,
-			'post_content' => $input,
+			'post_content' => wp_slash( $input ),
+		) );
+		$this->assertEquals( $output, get_post( $post_id )->post_content );
+	}
+
+	/**
+	 * Ensure sortcode reversal works as expected
+	 */
+	public function test_shortcode_reversal_format_three() {
+		$post_id = $this->factory->post->create();
+		$input = <<<EOT
+Test test
+<div class="nutrifox-label" data-recipe-id="8480"></div>
+<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+
+Don't you live it too?
+EOT;
+		$output = <<<EOT
+Test test
+[nutrifox id="8480"]
+
+Don't you live it too?
+EOT;
+		wp_update_post( array(
+			'ID' => $post_id,
+			'post_content' => wp_slash( $input ),
 		) );
 		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
