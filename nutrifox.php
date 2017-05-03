@@ -7,7 +7,7 @@
  * Author URI:      http://pinchofyum.com/
  * Text Domain:     nutrifox
  * Domain Path:     /languages
- * Version:         0.1.0-alpha
+ * Version:         0.1.0
  *
  * @package         Nutrifox
  */
