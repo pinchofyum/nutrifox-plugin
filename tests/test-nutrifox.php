@@ -32,7 +32,7 @@ EOT;
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_label() {
-		$input = <<<EOT
+		$input  = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/embed/label/7500
@@ -52,7 +52,7 @@ EOT;
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_standard() {
-		$input = <<<EOT
+		$input  = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/recipes/7500
@@ -72,7 +72,7 @@ EOT;
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_standard_edit() {
-		$input = <<<EOT
+		$input  = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/recipes/7500/edit
@@ -93,7 +93,7 @@ EOT;
 	 */
 	public function test_shortcode_reversal() {
 		$post_id = $this->factory->post->create();
-		$input = <<<EOT
+		$input   = <<<EOT
 My favorite WordPress feature
 
 <div class="nutrifox-label" data-recipe-id="7500"></div>
@@ -101,17 +101,19 @@ My favorite WordPress feature
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
+		$output  = <<<EOT
 My favorite WordPress feature
 
 [nutrifox id="7500"]
 
 Don't you live it too?
 EOT;
-		wp_update_post( array(
-			'ID' => $post_id,
-			'post_content' => wp_slash( $input ),
-		) );
+		wp_update_post(
+			array(
+				'ID'           => $post_id,
+				'post_content' => wp_slash( $input ),
+			)
+		);
 		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
 
@@ -120,23 +122,25 @@ EOT;
 	 */
 	public function test_shortcode_reversal_format_two() {
 		$post_id = $this->factory->post->create();
-		$input = <<<EOT
+		$input   = <<<EOT
 Test test
 <div class="nutrifox-label" data-recipe-id="8480">&nbsp;</div>
 <script async="" src="https://nutrifox.com/embed.js" charset="utf-8"></script>
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
+		$output  = <<<EOT
 Test test
 [nutrifox id="8480"]
 
 Don't you live it too?
 EOT;
-		wp_update_post( array(
-			'ID' => $post_id,
-			'post_content' => wp_slash( $input ),
-		) );
+		wp_update_post(
+			array(
+				'ID'           => $post_id,
+				'post_content' => wp_slash( $input ),
+			)
+		);
 		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
 
@@ -145,23 +149,25 @@ EOT;
 	 */
 	public function test_shortcode_reversal_format_three() {
 		$post_id = $this->factory->post->create();
-		$input = <<<EOT
+		$input   = <<<EOT
 Test test
 <div class="nutrifox-label" data-recipe-id="8480"></div>
 <script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
+		$output  = <<<EOT
 Test test
 [nutrifox id="8480"]
 
 Don't you live it too?
 EOT;
-		wp_update_post( array(
-			'ID' => $post_id,
-			'post_content' => wp_slash( $input ),
-		) );
+		wp_update_post(
+			array(
+				'ID'           => $post_id,
+				'post_content' => wp_slash( $input ),
+			)
+		);
 		$this->assertEquals( $output, get_post( $post_id )->post_content );
 	}
 
