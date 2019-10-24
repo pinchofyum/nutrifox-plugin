@@ -19,6 +19,42 @@
 function nutrifox_action_init() {
 	add_shortcode( 'nutrifox', 'nutrifox_shortcode' );
 	wp_embed_register_handler( 'nutrifox', '#^https?://nutrifox\.com/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', 'nutrifox_shortcode' );
+	if ( function_exists( 'register_block_type' ) ) {
+		$time = filemtime( dirname( __FILE__ ) . '/assets/js/nutrifox-resize.js' );
+		wp_register_script(
+			'nutrifox-resize',
+			plugins_url( 'assets/js/nutrifox-resize.js?r=' . (int) $time, __FILE__ )
+		);
+		$time = filemtime( dirname( __FILE__ ) . '/assets/dist/block-editor.build.js' );
+		wp_register_script(
+			'nutrifox-block-editor',
+			plugins_url( 'assets/dist/block-editor.build.js?r=' . (int) $time, __FILE__ ),
+			array(
+				'nutrifox-resize',
+				'wp-blocks',
+				'wp-editor',
+				'wp-element',
+				'wp-components',
+				'wp-data',
+				'wp-i18n',
+			)
+		);
+		register_block_type(
+			'nutrifox/nutrifox',
+			array(
+				'attributes'      => array(
+					'id'  => array(
+						'type' => 'number',
+					),
+					'url' => array(
+						'type' => 'string',
+					),
+				),
+				'editor_script'   => 'nutrifox-block-editor',
+				'render_callback' => 'nutrifox_shortcode',
+			)
+		);
+	}
 }
 add_action( 'init', 'nutrifox_action_init' );
 
@@ -28,8 +64,22 @@ add_action( 'init', 'nutrifox_action_init' );
  * @param array $attr Shortcode attributes.
  */
 function nutrifox_shortcode( $attr ) {
-	if ( empty( $attr['id'] ) ) {
+	if ( empty( $attr['id'] ) && empty( $attr['url'] ) ) {
 		return '';
+	}
+	if ( ! empty( $attr['url'] ) ) {
+		if ( is_numeric( $attr['url'] ) ) {
+			$attr['id'] = $attr['url'];
+		} else {
+			preg_match( '#^https?://nutrifox\.com/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', $attr['url'], $matches );
+			if ( empty( $matches ) ) {
+				if ( current_user_can( 'edit_posts' ) ) {
+					return __( 'Invalid Nutrifox URL provided.', 'nutrifox' );
+				}
+				return '';
+			}
+			$attr['id'] = $matches['id'];
+		}
 	}
 	$nutrifox_id            = (int) $attr['id'];
 	$nutrifox_iframe_url    = sprintf( 'https://nutrifox.com/embed/label/%d', $nutrifox_id );
