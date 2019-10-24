@@ -10,6 +10,7 @@
     "grunt-wp-readme-to-markdown": "~1.0.0"
   },
   "scripts": {
+    "lint": "npm run lint:php",
     "lint:php": "./vendor/bin/phpcs",
     "lint:php:fix": "./vendor/bin/phpcbf",
     "test": "npm run test:php",
