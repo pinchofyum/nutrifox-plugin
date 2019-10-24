@@ -1,15 +1,16 @@
 <?php
 /**
- * Plugin Name:     Nutrifox
- * Plugin URI:      https://nutrifox.com/
- * Description:     Embed Nutrifox recipes in WordPress in one moment or less.
- * Author:          Pinch of Yum
- * Author URI:      http://pinchofyum.com/
- * Text Domain:     nutrifox
- * Domain Path:     /languages
- * Version:         0.1.0
+ * Plugin Name:       Nutrifox
+ * Plugin URI:        https://nutrifox.com/
+ * Description:       Embed Nutrifox recipes in WordPress in one moment or less.
+ * Author:            Pinch of Yum
+ * Author URI:        http://pinchofyum.com/
+ * Text Domain:       nutrifox
+ * Domain Path:       /languages
+ * Version:           0.1.0
+ * GitHub Plugin URI: https://github.com/pinchofyum/nutrifox-plugin
  *
- * @package         Nutrifox
+ * @package           Nutrifox
  */
 
 /**
