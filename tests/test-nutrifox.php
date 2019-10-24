@@ -18,6 +18,20 @@ class Nutrifox_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Ensure the shortcode renders as expected
+	 */
+	public function test_shortcode_render_url() {
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', do_shortcode( '[nutrifox url="https://nutrifox.com/recipes/7500/edit"]' ) );
+	}
+
+	/**
+	 * Ensure the shortcode renders as expected
+	 */
+	public function test_shortcode_render_id_in_url() {
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', do_shortcode( '[nutrifox url="7500"]' ) );
+	}
+
+	/**
 	 * Shortcode with an empty id should return empty string
 	 */
 	public function test_shortcode_render_no_id() {
