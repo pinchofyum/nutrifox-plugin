@@ -28,7 +28,7 @@ class Nutrifox_Test extends WP_UnitTestCase {
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_label() {
-		$input  = <<<EOT
+		$input = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/embed/label/7500
@@ -42,7 +42,7 @@ EOT;
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_standard() {
-		$input  = <<<EOT
+		$input = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/recipes/7500
@@ -56,7 +56,7 @@ EOT;
 	 * Ensure oEmbed handlers return expected output
 	 */
 	public function test_oembed_handler_standard_edit() {
-		$input  = <<<EOT
+		$input = <<<EOT
 My favorite WordPress feature
 
 https://nutrifox.com/recipes/7500/edit
