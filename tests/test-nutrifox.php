@@ -14,11 +14,7 @@ class Nutrifox_Test extends WP_UnitTestCase {
 	 * Ensure the shortcode renders as expected
 	 */
 	public function test_shortcode_render() {
-		$output = <<<EOT
-<div class="nutrifox-label" data-recipe-id="7500"></div>
-<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
-EOT;
-		$this->assertEquals( $output, do_shortcode( '[nutrifox id="7500"]' ) );
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', do_shortcode( '[nutrifox id="7500"]' ) );
 	}
 
 	/**
@@ -39,13 +35,7 @@ https://nutrifox.com/embed/label/7500
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
-<p>My favorite WordPress feature</p>
-<div class="nutrifox-label" data-recipe-id="7500"></div>
-<p><script async src="https://nutrifox.com/embed.js" charset="utf-8"></script></p>
-<p>Don&#8217;t you live it too?</p>
-EOT;
-		$this->assertEquals( $output, trim( apply_filters( 'the_content', $input ) ) );
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', trim( apply_filters( 'the_content', $input ) ) );
 	}
 
 	/**
@@ -59,13 +49,7 @@ https://nutrifox.com/recipes/7500
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
-<p>My favorite WordPress feature</p>
-<div class="nutrifox-label" data-recipe-id="7500"></div>
-<p><script async src="https://nutrifox.com/embed.js" charset="utf-8"></script></p>
-<p>Don&#8217;t you live it too?</p>
-EOT;
-		$this->assertEquals( $output, trim( apply_filters( 'the_content', $input ) ) );
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', trim( apply_filters( 'the_content', $input ) ) );
 	}
 
 	/**
@@ -79,13 +63,7 @@ https://nutrifox.com/recipes/7500/edit
 
 Don't you live it too?
 EOT;
-		$output = <<<EOT
-<p>My favorite WordPress feature</p>
-<div class="nutrifox-label" data-recipe-id="7500"></div>
-<p><script async src="https://nutrifox.com/embed.js" charset="utf-8"></script></p>
-<p>Don&#8217;t you live it too?</p>
-EOT;
-		$this->assertEquals( $output, trim( apply_filters( 'the_content', $input ) ) );
+		$this->assertContains( '<iframe id="nutrifox-label-7500"', trim( apply_filters( 'the_content', $input ) ) );
 	}
 
 	/**

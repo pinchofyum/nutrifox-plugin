@@ -30,27 +30,17 @@ function nutrifox_shortcode( $attr ) {
 	if ( empty( $attr['id'] ) ) {
 		return '';
 	}
+	$nutrifox_id            = (int) $attr['id'];
+	$nutrifox_iframe_url    = sprintf( 'https://nutrifox.com/embed/label/%d', $nutrifox_id );
+	$nutrifox_resize_script = file_get_contents( dirname( __FILE__ ) . '/assets/js/nutrifox-resize.js' );
 	ob_start(); ?>
-<div class="nutrifox-label" data-recipe-id="<?php echo (int) $attr['id']; ?>"></div>
-<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		<?php echo $nutrifox_resize_script; ?>
+	</script>
+<iframe id="<?php echo esc_attr( 'nutrifox-label-' . $nutrifox_id ); ?>" src="<?php echo esc_url( $nutrifox_iframe_url ); ?>" style="width:100%;border-width:0;"></iframe>
 	<?php
 	return trim( ob_get_clean() );
 }
-
-/**
- * If Nutrifox is in the body content, load JS as early as possible
- */
-function nutrifox_action_wp_head_early() {
-	if ( ! is_singular()
-		|| empty( get_queried_object()->post_content )
-		|| false === strpos( get_queried_object()->post_content, 'nutrifox' ) ) {
-		return;
-	}
-	?>
-	<script async src="https://nutrifox.com/embed.js" charset="utf-8"></script>
-	<?php
-}
-add_action( 'wp_head', 'nutrifox_action_wp_head_early', 1 );
 
 /**
  * Transform Nutrifox embed codes into their shortcode
