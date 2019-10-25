@@ -44,7 +44,7 @@ const edit = ( { attributes, setAttributes, instanceId } ) => {
 			<div className="wp-nutrifox-shortcode" style={ placeholderStyle }>
 				<label htmlFor={ inputId } style={ labelStyle }>
 					<Dashicon icon="carrot" />
-					<span style={ spanStyle }>{ __( 'Nutrifox Card' ) }</span>
+					<span style={ spanStyle }>{ __( 'Nutrifox Label' ) }</span>
 				</label>
 				<PlainText
 					id={ inputId }
@@ -67,7 +67,7 @@ const save = () => {
 };
 
 const blockRegistration = {
-	title: __( 'Nutrifox Card', 'nutrifox' ),
+	title: __( 'Nutrifox Label', 'nutrifox' ),
 	icon: 'carrot',
 	category: 'common',
 	html: false,
