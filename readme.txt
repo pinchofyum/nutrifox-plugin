@@ -2,8 +2,8 @@
 Contributors: nutrifox, danielbachhuber
 Tags: blogging, recipes
 Requires at least: 4.4
-Tested up to: 4.7.3
-Stable tag: 0.1.0
+Tested up to: 5.3
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,11 @@ The Nutrifox plugin can be installed much like any other WordPress plugin.
 With Nutrifox, there aren't any confusing settings to configure or customizations you need to worry about. You can now share your nutrition labels with the world!
 
 == Changelog ==
+
+= 0.2.0 (October 25, 2019) =
+* Adds a Nutrifox block for the Block Editor [[#22](https://github.com/pinchofyum/nutrifox-plugin/pull/22)].
+* To keep the Nutrifox plugin up to date, includes support for the [GitHub Updater WordPress plugin](https://github.com/afragen/github-updater) [[#21](https://github.com/pinchofyum/nutrifox-plugin/pull/21)].
+* Switches to an `<iframe>` embed for better loading performance [[#19](https://github.com/pinchofyum/nutrifox-plugin/pull/19)].
 
 = 0.1.0 (May 3, 2017) =
 * Initial release.

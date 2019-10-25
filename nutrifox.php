@@ -7,7 +7,7 @@
  * Author URI:        http://pinchofyum.com/
  * Text Domain:       nutrifox
  * Domain Path:       /languages
- * Version:           0.1.0
+ * Version:           0.2.0
  * GitHub Plugin URI: https://github.com/pinchofyum/nutrifox-plugin
  *
  * @package           Nutrifox
