@@ -7,17 +7,6 @@ module.exports = function( grunt ) {
 
 		pkg: grunt.file.readJSON( 'package.json' ),
 
-		addtextdomain: {
-			options: {
-				textdomain: 'nutrifox',
-			},
-			target: {
-				files: {
-					src: [ '*.php', '**/*.php', '!node_modules/**', '!php-tests/**', '!bin/**' ]
-				}
-			}
-		},
-
 		wp_readme_to_markdown: {
 			your_target: {
 				files: {
@@ -25,27 +14,9 @@ module.exports = function( grunt ) {
 				}
 			},
 		},
-
-		makepot: {
-			target: {
-				options: {
-					domainPath: '/languages',
-					mainFile: 'nutrifox.php',
-					potFilename: 'nutrifox.pot',
-					potHeaders: {
-						poedit: true,
-						'x-poedit-keywordslist': true
-					},
-					type: 'wp-plugin',
-					updateTimestamp: true
-				}
-			}
-		},
 	} );
 
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
 
 	grunt.util.linefeed = '\n';
