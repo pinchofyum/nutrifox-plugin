@@ -2,20 +2,30 @@
 Contributors: nutrifox, danielbachhuber
 Tags: blogging, recipes
 Requires at least: 4.4
-Tested up to: 5.3
+Tested up to: 5.4
 Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Embed Nutrifox recipes in WordPress in one moment or less.
+Embed Nutrifox labels in WordPress in a moment or less.
 
 == Description ==
 
-The Nutrifox plugin allows users easily to embed Nutrifox nutrition labels in their WordPress posts. In the Block Editor, use the Nutrifox block to see a live preview of the label. In the Classic Editor, use the Nutrifox shortcode to render your label within your post.
+The Nutrifox WordPress plugin allows users easily to embed their own Nutrifox nutrition labels in their WordPress posts. In the Block Editor, use the Nutrifox block to see a live preview of the label. In the Classic Editor, use the Nutrifox shortcode to render your label within your post.
+
+**A Nutrifox account is required to use this plugin.** You cannot create nutrition labels with this plugin alone. To learn more about Nutrifox, head to [nutrifox.com](https://www.nutrifox.com).
+
+You should download this plugin **if you have an active Nutrifox account** and:
+
+1. You want to be able to see a preview of your label in the Block or Classic Editor, and/or
+2. You want your Nutrifox nutrition labels to load even faster, and/or
+3. You want to prevent any unexpected copying errors in the label code <script> tag
 
 = The information your readers want =
 
-Nutrifox allows publishers to give their readers the nutrition information they want to see. A comprehensive food database and fine-grain control of ingredients and label display gives publishers freedom and informational power. The Nutrifox WordPress plugin makes it easy to share this information with readers.
+Nutrifox helps you give your readers the nutrition information they want to see. A comprehensive food database and fine-grain control of ingredients and label display gives your content an extra layer of authority.
+
+The Nutrifox WordPress plugin makes it easy to share this information with readers and see a preview of the label before you press publish.
 
 = Flexible integration =
 
@@ -31,8 +41,6 @@ The Nutrifox plugin can be installed much like any other WordPress plugin.
 2. Activate the Nutrifox plugin through the "Plugins" list in the WordPress admin.
 
 With Nutrifox, there aren't any confusing settings to configure or customizations you need to worry about. You can now share your nutrition labels with the world!
-
-To keep the Nutrifox plugin up to date, install the [GitHub Updater WordPress plugin](https://github.com/afragen/github-updater) alongside the Nutrifox plugin.
 
 == Changelog ==
 
