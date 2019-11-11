@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Nutrifox
+ * Plugin Name:       Nutrifox WP Connector
  * Plugin URI:        https://nutrifox.com/
  * Description:       Embed Nutrifox recipes in WordPress in one moment or less.
  * Author:            Pinch of Yum
