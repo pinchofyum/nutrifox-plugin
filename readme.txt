@@ -1,4 +1,4 @@
-=== Nutrifox ===
+=== Nutrifox WP Connector ===
 Contributors: nutrifox, danielbachhuber
 Tags: blogging, recipes
 Requires at least: 4.4

@@ -1,4 +1,4 @@
-# Nutrifox #
+# Nutrifox WP Connector #
 **Contributors:** [nutrifox](https://profiles.wordpress.org/nutrifox), [danielbachhuber](https://profiles.wordpress.org/danielbachhuber)  
 **Tags:** blogging, recipes  
 **Requires at least:** 4.4  
