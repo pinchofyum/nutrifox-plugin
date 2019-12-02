@@ -1,6 +1,7 @@
 (function(){
 	window.addEventListener( 'message', ( event ) => {
-		if ( 'https://nutrifox.com' !== event.origin ||
+		if ( ( 'https://nutrifox.com' !== event.origin &&
+			'http://nutrifox.test' !== event.origin ) ||
 			typeof event.data !== 'string' ) {
 			return;
 		}
