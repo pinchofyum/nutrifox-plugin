@@ -18,7 +18,7 @@
  */
 function nutrifox_action_init() {
 	add_shortcode( 'nutrifox', 'nutrifox_shortcode' );
-	wp_embed_register_handler( 'nutrifox', '#^https?://nutrifox\.com/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', 'nutrifox_shortcode' );
+	wp_embed_register_handler( 'nutrifox', '#^https?://nutrifox\.(?<tld>com|test)/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', 'nutrifox_shortcode' );
 	if ( function_exists( 'register_block_type' ) ) {
 		$time = filemtime( dirname( __FILE__ ) . '/assets/js/nutrifox-resize.js' );
 		wp_register_script(
@@ -67,22 +67,29 @@ function nutrifox_shortcode( $attr ) {
 	if ( empty( $attr['id'] ) && empty( $attr['url'] ) ) {
 		return '';
 	}
+	$attr = array_merge(
+		array(
+			'tld' => 'com',
+		),
+		$attr
+	);
 	if ( ! empty( $attr['url'] ) ) {
 		if ( is_numeric( $attr['url'] ) ) {
 			$attr['id'] = $attr['url'];
 		} else {
-			preg_match( '#^https?://nutrifox\.com/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', $attr['url'], $matches );
+			preg_match( '#^https?://nutrifox\.(?<tld>com|test)/(embed/label|recipes)/(?P<id>\d+)(/edit)?#', $attr['url'], $matches );
 			if ( empty( $matches ) ) {
 				if ( current_user_can( 'edit_posts' ) ) {
 					return __( 'Invalid Nutrifox URL provided.', 'nutrifox' );
 				}
 				return '';
 			}
-			$attr['id'] = $matches['id'];
+			$attr['id']  = $matches['id'];
+			$attr['tld'] = $matches['tld'];
 		}
 	}
 	$nutrifox_id            = (int) $attr['id'];
-	$nutrifox_iframe_url    = sprintf( 'https://nutrifox.com/embed/label/%d', $nutrifox_id );
+	$nutrifox_iframe_url    = sprintf( 'http://nutrifox.%s/embed/label/%d', $attr['tld'], $nutrifox_id );
 	$nutrifox_resize_script = file_get_contents( dirname( __FILE__ ) . '/assets/js/nutrifox-resize.js' );
 	ob_start(); ?>
 	<script type="text/javascript">
