@@ -19,7 +19,7 @@
     "node-sass": "^4.13.1",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
     "build": "npm run lint:js && cross-env BABEL_ENV=default webpack",
