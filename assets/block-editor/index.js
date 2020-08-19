@@ -1,6 +1,4 @@
-const {
-	registerBlockType,
-} = wp.blocks;
+const { registerBlockType } = wp.blocks;
 
 /**
  * Internal dependencies
