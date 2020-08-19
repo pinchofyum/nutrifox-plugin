@@ -5,4 +5,4 @@ const { registerBlockType } = wp.blocks;
  */
 import blockRegistration from './nutrifox-block';
 
-registerBlockType( 'nutrifox/nutrifox', blockRegistration );
+registerBlockType('nutrifox/nutrifox', blockRegistration);

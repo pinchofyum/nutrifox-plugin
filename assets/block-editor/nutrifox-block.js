@@ -9,8 +9,8 @@ const { Fragment } = wp.element;
 
 const { __ } = wp.i18n;
 
-const edit = ( { attributes, setAttributes, instanceId } ) => {
-	const inputId = `blocks-nutrifox-input-${ instanceId }`;
+const edit = ({ attributes, setAttributes, instanceId }) => {
+	const inputId = `blocks-nutrifox-input-${instanceId}`;
 	const placeholderStyle = {
 		display: 'flex',
 		flexDirection: 'row',
@@ -33,25 +33,25 @@ const edit = ( { attributes, setAttributes, instanceId } ) => {
 	};
 	return (
 		<Fragment>
-			<div className="wp-nutrifox-shortcode" style={ placeholderStyle }>
-				<label htmlFor={ inputId } style={ labelStyle }>
+			<div className="wp-nutrifox-shortcode" style={placeholderStyle}>
+				<label htmlFor={inputId} style={labelStyle}>
 					<Dashicon icon="carrot" />
-					<span style={ spanStyle }>{ __( 'Nutrifox Label' ) }</span>
+					<span style={spanStyle}>{__('Nutrifox Label')}</span>
 				</label>
 				<PlainText
-					id={ inputId }
+					id={inputId}
 					className="input-control"
-					value={ attributes.url }
-					placeholder={ __( 'Paste Nutrifox URL or ID here…' ) }
-					onChange={ ( url ) => setAttributes( { url } ) }
+					value={attributes.url}
+					placeholder={__('Paste Nutrifox URL or ID here…')}
+					onChange={(url) => setAttributes({ url })}
 				/>
 			</div>
-			{ attributes.url && (
+			{attributes.url && (
 				<ServerSideRender
 					block="nutrifox/nutrifox"
-					attributes={ attributes }
+					attributes={attributes}
 				/>
-			) }
+			)}
 		</Fragment>
 	);
 };
@@ -62,7 +62,7 @@ const save = () => {
 };
 
 const blockRegistration = {
-	title: __( 'Nutrifox Label', 'nutrifox' ),
+	title: __('Nutrifox Label', 'nutrifox'),
 	icon: 'carrot',
 	category: 'common',
 	html: false,
@@ -84,11 +84,11 @@ const blockRegistration = {
 				attributes: {
 					id: {
 						type: 'number',
-						shortcode: ( props ) => {
-							if ( typeof props.named.id === 'undefined' ) {
+						shortcode: (props) => {
+							if (typeof props.named.id === 'undefined') {
 								return 0;
 							}
-							return parseInt( props.named.id );
+							return parseInt(props.named.id);
 						},
 					},
 				},
