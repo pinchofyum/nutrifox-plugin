@@ -1,22 +1,13 @@
 /**
  * WordPress dependencies
  */
-const {
-	PlainText,
-} = wp.editor;
+const { PlainText } = wp.editor;
 
-const {
-	Dashicon,
-	ServerSideRender,
-} = wp.components;
+const { Dashicon, ServerSideRender } = wp.components;
 
-const {
-	Fragment,
-} = wp.element;
+const { Fragment } = wp.element;
 
-const {
-	__,
-} = wp.i18n;
+const { __ } = wp.i18n;
 
 const edit = ( { attributes, setAttributes, instanceId } ) => {
 	const inputId = `blocks-nutrifox-input-${ instanceId }`;
@@ -26,7 +17,8 @@ const edit = ( { attributes, setAttributes, instanceId } ) => {
 		padding: '14px',
 		backgroundColor: '#f8f9f9',
 		fontSize: '13px',
-		fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
+		fontFamily:
+			'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif',
 	};
 	const labelStyle = {
 		display: 'flex',
@@ -54,9 +46,12 @@ const edit = ( { attributes, setAttributes, instanceId } ) => {
 					onChange={ ( url ) => setAttributes( { url } ) }
 				/>
 			</div>
-			{ attributes.url &&
-				<ServerSideRender block="nutrifox/nutrifox" attributes={ attributes } />
-			}
+			{ attributes.url && (
+				<ServerSideRender
+					block="nutrifox/nutrifox"
+					attributes={ attributes }
+				/>
+			) }
 		</Fragment>
 	);
 };
