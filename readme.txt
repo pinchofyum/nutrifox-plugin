@@ -1,7 +1,7 @@
 === Nutrifox WP Connector ===
 Contributors: nutrifox, danielbachhuber
 Tags: blogging, recipes
-Requires at least: 4.4
+Requires at least: 5.4
 Tested up to: 5.5
 Stable tag: 0.2.0
 License: GPLv2 or later
