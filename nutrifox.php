@@ -25,7 +25,10 @@ function nutrifox_action_init() {
 			'nutrifox-resize',
 			plugins_url( 'assets/js/nutrifox-resize.js?r=' . (int) $time, __FILE__ )
 		);
-		$time = filemtime( dirname( __FILE__ ) . '/assets/dist/block-editor.build.js' );
+		$time = 0;
+		if ( file_exists( dirname( __FILE__ ) . '/assets/dist/block-editor.build.js' ) ) {
+			$time = filemtime( dirname( __FILE__ ) . '/assets/dist/block-editor.build.js' );
+		}
 		wp_register_script(
 			'nutrifox-block-editor',
 			plugins_url( 'assets/dist/block-editor.build.js?r=' . (int) $time, __FILE__ ),
