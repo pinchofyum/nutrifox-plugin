@@ -17,7 +17,7 @@
     "grunt-sass": "^3.1.0",
     "grunt-wp-readme-to-markdown": "^2.0.1",
     "node-sass": "^5.0.0",
-    "prettier": "^2.2.0",
+    "prettier": "^2.2.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.8.0",
     "webpack-cli": "^4.2.0"
