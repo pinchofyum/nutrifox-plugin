@@ -1,0 +1,27 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: phpunit/phpunit
+    versions:
+    - ">= 7.a"
+    - "< 8"
+  - dependency-name: phpunit/phpunit
+    versions:
+    - ">= 8.a"
+    - "< 9"
+  - dependency-name: phpunit/phpunit
+    versions:
+    - ">= 9.a"
+    - "< 10"
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 99
